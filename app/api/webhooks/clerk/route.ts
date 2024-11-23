@@ -73,6 +73,7 @@ export async function POST(req: Request) {
       })
     }
 
+    console.log('userCreaged', newUser)
     return NextResponse.json({message: 'OK', user: newUser})
   }
 

@@ -1,6 +1,6 @@
 import mongoose, {Mongoose} from 'mongoose'
 
-const MONGODN_URL = process.env.MONGODB_URL
+const MONGODB_URL = process.env.MONGODB_URL
 
 interface MongooseConnection {
   conn: Mongoose | null
@@ -18,13 +18,13 @@ export const connectToDatabase = async () => {
     return cached.conn
   }
 
-  if (!MONGODN_URL) {
+  if (!MONGODB_URL) {
     throw new Error('MONGODB_URL is not defined')
   }
 
   cached.promise =
     cached.promise ||
-    mongoose.connect(MONGODN_URL, {
+    mongoose.connect(MONGODB_URL, {
       dbName: 'photocraft_ai',
       bufferCommands: false
     })
